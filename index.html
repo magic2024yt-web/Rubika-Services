@@ -2,268 +2,291 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>خدمات تخصصی روبیکا و روبینو</title>
     
-    <!-- فونت پیدا با سنگین‌ترین وزن (Peyda Black / ExtraBlack) -->
-    <style>
-        @font-face {
-            font-family: 'Peyda';
-            src: url('https://cdn.jsdelivr.net/gh/rastikerdar/peyda-font@v1.0.0/dist/Peyda-Black.woff2') format('woff2'),
-                 url('https://cdn.jsdelivr.net/gh/rastikerdar/peyda-font@v1.0.0/dist/Peyda-Black.woff') format('woff');
-            font-weight: 900;
-            font-style: normal;
-            font-display: swap;
-        }
+    <!-- لینک CDN اختصاصی و پرسرعت فونت پیدا (شامل تمامی وزن‌ها تا وزن 900 بلک) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AmirAbbasVafaee/persian-fonts-cdn@main/css/peyda.css">
 
+    <style>
         :root {
-            --bg-color: #0f1115;          /* طوسی بسیار تیره پس‌زمینه */
-            --card-bg: #161920;           /* طوسی تیره کارت‌ها */
-            --card-border: #232732;       /* حاشیه ظریف */
+            --bg-color: #0d0f13;          /* طوسی بسیار تیره پس‌زمینه */
+            --card-bg: #15181f;           /* پس‌زمینه کارت‌ها */
+            --card-border: #232834;       /* حاشیه ظریف */
             --text-primary: #ffffff;      /* سفید خالص */
-            --text-muted: #8e95a5;        /* طوسی روشن متن فرعی */
-            --glow-color: rgba(255, 255, 255, 0.15); /* درخشش سفید */
-            --accent-glow: rgba(255, 255, 255, 0.4);
+            --text-muted: #949ca9;        /* طوسی متن فرعی */
+            --glow-color: rgba(255, 255, 255, 0.12); /* گلو سفید ملایم */
+            --accent-glow: rgba(255, 255, 255, 0.35);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Peyda', -apple-system, BlinkMacSystemFont, Tahoma, sans-serif;
-            font-weight: 900;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Peyda', sans-serif !important;
+            font-weight: 900 !important; /* اعمال سنگین‌ترین وزن فونت به تمام عناصر */
         }
 
-        body {
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden; /* جلوگیری قطعی از اسکرول افقی در موبایل */
             background-color: var(--bg-color);
             color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
             line-height: 1.6;
         }
 
-        /* افکت‌های گلو (نورهای پس‌زمینه مینیمال) */
-        .glow-sphere {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(120px);
+        /* لایه اختصاصی نگه‌دارنده نورها بدون بهم‌ریختن اسکرین موبایل */
+        .glow-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
             pointer-events: none;
             z-index: 0;
         }
 
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.7;
+        }
+
         .glow-1 {
-            width: 380px;
-            height: 380px;
-            background: rgba(255, 255, 255, 0.05);
-            top: -100px;
-            right: 10%;
+            width: 260px;
+            height: 260px;
+            background: rgba(255, 255, 255, 0.06);
+            top: -60px;
+            right: -40px;
         }
 
         .glow-2 {
-            width: 450px;
-            height: 450px;
-            background: rgba(140, 150, 170, 0.04);
-            bottom: 10%;
-            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: rgba(140, 155, 180, 0.05);
+            bottom: 5%;
+            left: -60px;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* ساختار کامپوننت‌ها به صورت تمام فلکس */
+        .app-container {
             position: relative;
             z-index: 1;
+            width: 100%;
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 24px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
         }
 
-        /* هدر و ناوبری */
+        /* هدر فلکس */
         header {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0 60px 0;
+            padding-bottom: 15px;
         }
 
         .logo {
-            font-size: 1.4rem;
-            letter-spacing: -0.5px;
+            font-size: 1.25rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .logo-dot {
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             background-color: #fff;
             border-radius: 50%;
-            box-shadow: 0 0 10px #ffffff;
+            box-shadow: 0 0 12px #fff;
         }
 
         .contact-btn {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--card-border);
-            padding: 10px 22px;
-            border-radius: 40px;
+            padding: 9px 18px;
+            border-radius: 30px;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            transition: all 0.25s ease;
         }
 
         .contact-btn:hover {
-            border-color: #fff;
+            border-color: #ffffff;
             box-shadow: 0 0 15px var(--glow-color);
         }
 
-        /* بخش معرفی / هیرو */
+        /* بخش هیرو فلکس */
         .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 40px 0 80px 0;
+            gap: 16px;
+            padding: 20px 0 10px 0;
+            width: 100%;
         }
 
         .hero-tag {
-            display: inline-block;
-            background: #191c24;
+            background: #181c24;
             border: 1px solid var(--card-border);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             color: var(--text-muted);
-            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            text-shadow: 0 0 35px var(--glow-color);
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            line-height: 1.35;
+            text-shadow: 0 0 25px var(--glow-color);
+            max-width: 700px;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+            max-width: 580px;
+            line-height: 1.7;
         }
 
-        /* گرید خدمات */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 80px;
+        /* چیدمان فلکس خدمات */
+        .services-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            width: 100%;
+            justify-content: center;
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 18px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            gap: 20px;
+            flex: 1 1 300px; /* فلکس واکنش‌گرا */
+            max-width: 100%;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-6px);
             border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 25px var(--glow-color);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--glow-color);
+        }
+
+        .card-top {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
         }
 
         .card-badge {
-            align-self: flex-start;
-            background: #20242e;
+            background: #1f242f;
             color: #d1d5db;
             font-size: 0.75rem;
-            padding: 4px 12px;
+            padding: 4px 10px;
             border-radius: 8px;
-            margin-bottom: 20px;
         }
 
         .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
 
         .card-btn {
             width: 100%;
             background: #ffffff;
-            color: #0f1115;
+            color: #0d0f13;
             padding: 12px;
             border-radius: 12px;
             border: none;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
 
         .card-btn:hover {
             background: #e2e8f0;
-            box-shadow: 0 0 20px var(--accent-glow);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
-        /* ویژگی‌ها */
+        /* نوار ویژگی‌ها فلکس */
         .features-strip {
+            width: 100%;
             display: flex;
-            justify-content: space-around;
             flex-wrap: wrap;
+            justify-content: space-around;
             gap: 20px;
-            padding: 30px;
+            padding: 24px 16px;
             border: 1px solid var(--card-border);
-            border-radius: 20px;
-            background: rgba(22, 25, 32, 0.5);
-            backdrop-filter: blur(10px);
-            margin-bottom: 60px;
+            border-radius: 18px;
+            background: rgba(21, 24, 31, 0.6);
+            backdrop-filter: blur(8px);
         }
 
         .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            gap: 4px;
+            flex: 1 1 180px;
         }
 
         .feature-title {
             color: var(--text-primary);
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+            font-size: 1rem;
         }
 
         .feature-sub {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         /* فوتر */
         footer {
             text-align: center;
-            padding: 40px 0;
+            padding: 20px 0 10px 0;
             border-top: 1px solid var(--card-border);
             color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.1rem; }
-            .hero p { font-size: 1rem; }
-            .services-grid { grid-template-columns: 1fr; }
+            font-size: 0.85rem;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <!-- افکت‌های گلو پس‌زمینه -->
-    <div class="glow-sphere glow-1"></div>
-    <div class="glow-sphere glow-2"></div>
+    <!-- لایه نوری پس‌زمینه بدون ایجاد اسکرول -->
+    <div class="glow-wrapper">
+        <div class="glow-sphere glow-1"></div>
+        <div class="glow-sphere glow-2"></div>
+    </div>
 
-    <div class="container">
+    <!-- بدنه اصلی فلکس -->
+    <div class="app-container">
+        
         <!-- هدر -->
         <header>
             <div class="logo">
@@ -280,12 +303,11 @@
             <p>تمامی خدمات افزایش ممبر، فالور، لایک و بازدید برای کانال‌های روبیکا و صفحات روبینو با بالاترین کیفیت و تحویل آنی.</p>
         </section>
 
-        <!-- کارت‌های خدمات -->
-        <section class="services-grid">
+        <!-- خدمات روبیکا و روبینو -->
+        <section class="services-wrapper">
             
-            <!-- سرویس ۱ -->
             <div class="card">
-                <div>
+                <div class="card-top">
                     <span class="card-badge">کانال روبیکا</span>
                     <h3>ممبر کانال روبیکا</h3>
                     <p>افزایش اعضای واقعی و فعال کانال، مناسب برای ایجاد اعتبار، جذب تبلیغات و رشد فروشگاه‌ها.</p>
@@ -293,41 +315,37 @@
                 <a href="https://rubika.ir/YOUR_ID" class="card-btn">ثبت سفارش</a>
             </div>
 
-            <!-- سرویس ۲ -->
             <div class="card">
-                <div>
+                <div class="card-top">
                     <span class="card-badge">صفحات روبینو</span>
                     <h3>فالور روبینو</h3>
-                    <p>ارتقای صفحه شخصی و بیزینسی در بخش روبینو با جذب فالورهای پرقدرت و مناسب ورود به ویترین.</p>
+                    <p>ارتقای صفحه شخصی و بیزینسی در بخش روبینو با جذب فالورهای باکیفیت و مناسب ورود به ویترین.</p>
                 </div>
                 <a href="https://rubika.ir/YOUR_ID" class="card-btn">ثبت سفارش</a>
             </div>
 
-            <!-- سرویس ۳ -->
             <div class="card">
-                <div>
+                <div class="card-top">
                     <span class="card-badge">پست روبینو</span>
                     <h3>لایک پست روبینو</h3>
-                    <p>افزایش آنی لایک عکس‌ها و ویدیوهای روبینو جهت بالا بردن انگیجمنت و شانس رفتن به اکسپلور.</p>
+                    <p>افزایش آنی لایک عکس‌ها و کلیپ‌های روبینو جهت ارتقای انگیجمنت و شانس رفتن به اکسپلور.</p>
                 </div>
                 <a href="https://rubika.ir/YOUR_ID" class="card-btn">ثبت سفارش</a>
             </div>
 
-            <!-- سرویس ۴ -->
             <div class="card">
-                <div>
+                <div class="card-top">
                     <span class="card-badge">کانال روبیکا</span>
                     <h3>بازدید (سین) کانال</h3>
-                    <p>افزایش بازدید پست‌های کانال به صورت تک‌پست یا بسته‌ای برای طبیعی نشان دادن تعامل اعضا.</p>
+                    <p>افزایش بازدید پست‌های کانال به صورت تکی یا بسته چند پستی برای طبیعی نشان دادن آمار کانال.</p>
                 </div>
                 <a href="https://rubika.ir/YOUR_ID" class="card-btn">ثبت سفارش</a>
             </div>
 
-            <!-- سرویس ۵ -->
             <div class="card">
-                <div>
+                <div class="card-top">
                     <span class="card-badge">ویدیو روبینو</span>
-                    <h3>بازدید پست روبینو</h3>
+                    <h3>بازدید ویدیو روبینو</h3>
                     <p>افزایش چشمگیر ویو کلیپ‌ها و ریلزهای روبینو برای افزایش اعتبار و تعامل مخاطبان.</p>
                 </div>
                 <a href="https://rubika.ir/YOUR_ID" class="card-btn">ثبت سفارش</a>
@@ -338,16 +356,16 @@
         <!-- نوار مزایا -->
         <div class="features-strip">
             <div class="feature-item">
-                <div class="feature-title">تحویل آنی</div>
+                <div class="feature-title">تحویل سریع</div>
                 <div class="feature-sub">شروع سفارش در کمتر از ۱۵ دقیقه</div>
             </div>
             <div class="feature-item">
-                <div class="feature-title">پشتیبانی ۲۴/۷</div>
+                <div class="feature-title">پشتیبانی دائمی</div>
                 <div class="feature-sub">پاسخگویی سریع در روبیکا و تلگرام</div>
             </div>
             <div class="feature-item">
-                <div class="feature-title">بدون نیاز به پسورد</div>
-                <div class="feature-sub">فقط با لینک کانال یا آیدی پیج</div>
+                <div class="feature-title">امنیت کامل</div>
+                <div class="feature-sub">بدون نیاز به پسورد یا اطلاعات حساس</div>
             </div>
         </div>
 
@@ -355,6 +373,7 @@
         <footer>
             <p>© کلیه حقوق برای پنل خدمات روبیکا محفوظ است.</p>
         </footer>
+
     </div>
 
 </body>
