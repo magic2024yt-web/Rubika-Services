@@ -256,7 +256,7 @@
             justify-content: center;
             gap: 15px;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition: all 0.3s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -264,7 +264,7 @@
             border-color: var(--yellow-accent);
             background: rgba(255, 215, 0, 0.12);
             box-shadow: 0 0 30px var(--yellow-glow);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .square-icon-wrap {
@@ -305,19 +305,21 @@
             margin: 5px 0;
         }
 
-        /* بخش‌های بازشونده */
-        .content-section {
-            display: none;
+        /* کانتینرهای نمایش بخش‌ها با کنترل مستقیم استایل */
+        #services-section {
+            display: block;
             width: 100%;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.35s ease;
         }
 
-        .content-section.show {
-            display: block;
+        #reviews-section {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.35s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -416,16 +418,16 @@
             transform: scale(1.02);
         }
 
-        /* گالری رضایت‌های شما */
+        /* گالری رضایت‌های مشتریان */
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 14px;
             width: 100%;
         }
 
         .review-card {
-            background: rgba(18, 22, 30, 0.7);
+            background: rgba(18, 22, 30, 0.75);
             border: 1px solid var(--card-border);
             border-radius: 16px;
             overflow: hidden;
@@ -434,6 +436,9 @@
             position: relative;
             box-shadow: 0 6px 20px rgba(0,0,0,0.4);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .review-card:hover {
@@ -447,15 +452,33 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            background: #151820;
         }
 
-        /* مودال تصویر */
+        /* نشانگر شماره تصویر */
+        .review-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .review-placeholder svg {
+            width: 28px;
+            height: 28px;
+            color: var(--yellow-accent);
+        }
+
+        /* مودال پاپ‌آپ */
         .modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.92);
+            background: rgba(0, 0, 0, 0.94);
             backdrop-filter: blur(15px);
             z-index: 9999999;
             align-items: center;
@@ -479,12 +502,12 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #fff;
             cursor: pointer;
         }
 
-        /* نوار ویژگی‌ها */
+        /* ویژگی‌ها */
         .features-strip {
             width: 100%;
             display: flex;
@@ -533,7 +556,7 @@
     <div class="ambient-glow halo-1"></div>
     <div class="ambient-glow halo-2"></div>
 
-    <!-- هدر ثابت با آیدی جدید روبیکا -->
+    <!-- هدر ثابت -->
     <header>
         <div class="header-content">
             <a href="#" class="logo">
@@ -556,10 +579,10 @@
             <p>جهت مشاهده تعرفه‌ها و رضایت‌های مشتریان یکی از گزینه‌های زیر را انتخاب کنید:</p>
         </section>
 
-        <!-- دو باکس مربعی و بزرگ بغل هم -->
+        <!-- دو دکمه مربعی کنار هم -->
         <div class="quick-actions-row">
             
-            <div class="square-btn active" id="btn-services" onclick="toggleSection('services')">
+            <div class="square-btn active" id="btn-services" onclick="showServices()">
                 <div class="square-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
@@ -570,7 +593,7 @@
                 <span class="square-title">خدمات روبیکا</span>
             </div>
 
-            <div class="square-btn" id="btn-reviews" onclick="toggleSection('reviews')">
+            <div class="square-btn" id="btn-reviews" onclick="showReviews()">
                 <div class="square-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
@@ -583,11 +606,10 @@
 
         <div class="section-divider"></div>
 
-        <!-- ۱. لیست خدمات بازشونده متصل به آیدی i_4_iIia -->
-        <div id="services-section" class="content-section show">
+        <!-- ۱. لیست خدمات بازشونده -->
+        <div id="services-section">
             <div class="services-accordion">
                 
-                <!-- خدمت ۱ -->
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header">
                         <div class="accordion-header-title">
@@ -602,7 +624,6 @@
                     </div>
                 </div>
 
-                <!-- خدمت ۲ -->
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header">
                         <div class="accordion-header-title">
@@ -617,7 +638,6 @@
                     </div>
                 </div>
 
-                <!-- خدمت ۳ -->
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header">
                         <div class="accordion-header-title">
@@ -632,7 +652,6 @@
                     </div>
                 </div>
 
-                <!-- خدمت ۴ -->
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header">
                         <div class="accordion-header-title">
@@ -647,7 +666,6 @@
                     </div>
                 </div>
 
-                <!-- خدمت ۵ -->
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header">
                         <div class="accordion-header-title">
@@ -665,8 +683,8 @@
             </div>
         </div>
 
-        <!-- ۲. بخش اسکرین‌شات‌های رضایت مشتری (rezayat (1).jpg تا rezayat (20).jpg) -->
-        <div id="reviews-section" class="content-section">
+        <!-- ۲. بخش گالری رضایت‌ها -->
+        <div id="reviews-section">
             <div class="reviews-grid" id="reviews-grid"></div>
         </div>
 
@@ -700,37 +718,67 @@
         <img class="modal-img" id="modalImg" src="">
     </div>
 
-    <!-- اسکریپت رندر عکس‌های رضایت با فاصله در نام فایل -->
+    <!-- اسکریپت ایمن و قطعی -->
     <script>
-        const reviewsGrid = document.getElementById('reviews-grid');
+        // ساخت گالری رضایت‌ها با جلوگیری از کرش یا لوپ تصویر
+        const grid = document.getElementById('reviews-grid');
         for (let i = 1; i <= 20; i++) {
-            const fileName = `rezayat (${i}).jpg`;
             const card = document.createElement('div');
             card.className = 'review-card';
-            card.onclick = () => openModal(fileName);
-            card.innerHTML = `<img src="${fileName}" alt="رضایت مشتری ${i}" loading="lazy" onerror="this.src='icon.jpg'">`;
-            reviewsGrid.appendChild(card);
+            
+            const img = document.createElement('img');
+            img.loading = 'lazy';
+            img.alt = `رضایت ${i}`;
+            
+            // ابتدا نام با فاصله را امتحان می‌کند
+            img.src = `rezayat (${i}).jpg`;
+            
+            // اگر با فاصله لود نشد، بدون فاصله را امتحان می‌کند و در صورت عدم وجود کادر زیبا نگه می‌دارد
+            img.onerror = function() {
+                if (!this.dataset.retry) {
+                    this.dataset.retry = '1';
+                    this.src = `rezayat(${i}).jpg`;
+                } else {
+                    this.onerror = null;
+                    this.style.display = 'none';
+                    card.innerHTML = `
+                        <div class="review-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            <span>رضایت مشتری ${i}</span>
+                        </div>
+                    `;
+                }
+            };
+
+            card.onclick = () => {
+                if (img.style.display !== 'none' && img.src) {
+                    openModal(img.src);
+                }
+            };
+
+            card.appendChild(img);
+            grid.appendChild(card);
         }
 
-        function toggleSection(type) {
-            const btnServices = document.getElementById('btn-services');
-            const btnReviews = document.getElementById('btn-reviews');
-            const secServices = document.getElementById('services-section');
-            const secReviews = document.getElementById('reviews-section');
-
-            if (type === 'services') {
-                btnServices.classList.add('active');
-                btnReviews.classList.remove('active');
-                secServices.classList.add('show');
-                secReviews.classList.remove('show');
-            } else {
-                btnReviews.classList.add('active');
-                btnServices.classList.remove('active');
-                secReviews.classList.add('show');
-                secReviews.classList.remove('show');
-            }
+        // عملکرد قطعی دکمه «خدمات روبیکا»
+        function showServices() {
+            document.getElementById('services-section').style.display = 'block';
+            document.getElementById('reviews-section').style.display = 'none';
+            document.getElementById('btn-services').classList.add('active');
+            document.getElementById('btn-reviews').classList.remove('active');
         }
 
+        // عملکرد قطعی دکمه «رضایت های شما»
+        function showReviews() {
+            document.getElementById('services-section').style.display = 'none';
+            document.getElementById('reviews-section').style.display = 'block';
+            document.getElementById('btn-reviews').classList.add('active');
+            document.getElementById('btn-services').classList.remove('active');
+        }
+
+        // باز و بسته شدن آکاردئون
         function toggleAccordion(element) {
             const isOpen = element.classList.contains('open');
             document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('open'));
@@ -739,10 +787,10 @@
             }
         }
 
+        // پاپ‌آپ تمام صفحه
         function openModal(src) {
             const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImg');
-            modalImg.src = src;
+            document.getElementById('modalImg').src = src;
             modal.classList.add('open');
         }
 
@@ -750,6 +798,7 @@
             document.getElementById('imageModal').classList.remove('open');
         }
 
+        // قفل راست‌کلیک
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
