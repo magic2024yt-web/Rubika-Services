@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>روبیکس پنل | بزرگ ترین مجموعه خدمات تخصصی روبیکا</title>
     
+    <!-- آیکون تب مرورگر -->
+    <link rel="icon" type="image/jpeg" href="icon.jpg">
+    <link rel="shortcut icon" href="icon.jpg">
+
     <!-- فونت پیدا با سنگین‌ترین وزن -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AmirAbbasVafaee/persian-fonts-cdn@main/css/peyda.css">
 
@@ -19,7 +23,7 @@
             --text-muted: #959fad;
         }
 
-        /* قفل کپی متون در کل سایت */
+        /* قفل کپی متون */
         * {
             margin: 0;
             padding: 0;
@@ -29,14 +33,11 @@
             font-weight: 900 !important;
             user-select: none !important;
             -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
         }
 
         html, body {
             width: 100%;
             max-width: 100%;
-            overflow-x: hidden;
             background-color: var(--bg-color);
             color: var(--text-primary);
             line-height: 1.6;
@@ -55,7 +56,7 @@
             z-index: 0;
         }
 
-        /* لایه نویز شنی */
+        /* لایه نویز */
         .noise-layer {
             position: fixed;
             inset: 0;
@@ -64,7 +65,7 @@
             z-index: 1;
         }
 
-        /* هاله‌های نوری زرد */
+        /* هاله‌های نوری */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -96,24 +97,18 @@
             100% { transform: translateY(45px) scale(1.15); }
         }
 
-        /* خطوط جداکننده ریز و شیک */
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), rgba(255, 255, 255, 0.08), transparent);
-            margin: 10px 0;
-        }
-
-        /* هدر ثابت در موبایل و کامپیوتر */
+        /* هدر کامپیوتر و موبایل کاملاً ثابت (Fixed) */
         header {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             width: 100%;
-            background: rgba(10, 12, 16, 0.85);
+            background: rgba(10, 12, 16, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
-            z-index: 9999;
+            z-index: 999999;
             padding: 12px 20px;
         }
 
@@ -156,27 +151,25 @@
             font-size: 0.85rem;
             white-space: nowrap;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
         }
 
         .contact-btn:hover {
             background: var(--yellow-accent);
             color: #0a0c10;
             box-shadow: 0 0 20px var(--yellow-glow);
-            transform: translateY(-2px);
         }
 
-        /* کانتینر اصلی محتوا */
+        /* کانتینر اصلی صفحه با فاصله از هدر فیکس‌شده */
         .app-container {
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 1050px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 30px 18px 50px 18px;
+            padding: 95px 18px 50px 18px;
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 32px;
         }
 
         /* بخش هیرو */
@@ -186,11 +179,10 @@
             align-items: center;
             text-align: center;
             gap: 16px;
-            padding: 15px 0 5px 0;
+            padding-top: 10px;
             width: 100%;
         }
 
-        /* بج (از رقیبات جلو بزن !) */
         .hero-tag {
             display: inline-flex;
             align-items: center;
@@ -215,26 +207,15 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1.1);
-                box-shadow: 0 0 14px var(--yellow-accent), 0 0 4px #fff;
-            }
-            50% {
-                opacity: 0.3;
-                transform: scale(0.75);
-                box-shadow: 0 0 4px var(--yellow-accent);
-            }
+            0%, 100% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 14px var(--yellow-accent), 0 0 4px #fff; }
+            50% { opacity: 0.3; transform: scale(0.75); box-shadow: 0 0 4px var(--yellow-accent); }
         }
 
-        /* تیتر اصلی در یک خط در تمامی نمایشگرها */
         .hero h1 {
             font-size: clamp(0.92rem, 4.3vw, 2.3rem);
             white-space: nowrap;
-            letter-spacing: -0.3px;
             width: 100%;
             text-align: center;
-            margin: 0;
         }
 
         .hero h1 span {
@@ -249,154 +230,257 @@
             line-height: 1.75;
         }
 
-        /* دو باکس کلیدی (کنار هم در موبایل و دسکتاپ) */
+        /* دو باکس مربعی، بزرگ و کنار هم حتی در موبایل */
         .quick-actions-row {
             display: flex;
             flex-direction: row;
-            gap: 14px;
+            gap: 18px;
             width: 100%;
-            max-width: 650px;
+            max-width: 520px;
             margin: 0 auto;
+            justify-content: center;
         }
 
-        .quick-box {
+        .square-btn {
             flex: 1;
-            background: rgba(18, 22, 30, 0.75);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 215, 0, 0.22);
-            border-radius: 18px;
-            padding: 16px 10px;
+            aspect-ratio: 1 / 1;
+            max-width: 230px;
+            background: rgba(18, 22, 30, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1.5px solid var(--card-border);
+            border-radius: 26px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-            text-align: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .quick-box:hover {
+        .square-btn.active {
             border-color: var(--yellow-accent);
-            box-shadow: 0 8px 25px var(--yellow-glow);
-            transform: translateY(-4px);
+            background: rgba(255, 215, 0, 0.12);
+            box-shadow: 0 0 30px var(--yellow-glow);
+            transform: translateY(-5px);
         }
 
-        .quick-icon-wrapper {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 215, 0, 0.1);
+        .square-icon-wrap {
+            width: 65px;
+            height: 65px;
+            border-radius: 20px;
+            background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--yellow-accent);
-            box-shadow: 0 0 12px var(--yellow-glow);
+            box-shadow: 0 0 16px var(--yellow-glow);
+            transition: all 0.3s ease;
         }
 
-        .quick-icon-wrapper svg {
-            width: 22px;
-            height: 22px;
+        .square-btn.active .square-icon-wrap {
+            background: var(--yellow-accent);
+            color: #0a0c10;
+            box-shadow: 0 0 25px var(--yellow-accent);
+        }
+
+        .square-icon-wrap svg {
+            width: 32px;
+            height: 32px;
             stroke-width: 2.2;
         }
 
-        .quick-box-title {
-            font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+        .square-title {
+            font-size: clamp(1rem, 3.8vw, 1.25rem);
             color: #ffffff;
         }
 
-        /* کارت‌های خدمات */
-        .services-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 22px;
+        .section-divider {
             width: 100%;
-            justify-content: center;
-        }
-
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 26px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 22px;
-            flex: 1 1 300px;
-            max-width: 100%;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.35), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), rgba(255, 255, 255, 0.08), transparent);
+            margin: 5px 0;
         }
 
-        .card:hover {
-            transform: translateY(-7px);
-            border-color: rgba(255, 215, 0, 0.38);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px var(--yellow-glow);
+        /* بخش بازشونده خدمات به صورت آکاردئون لیست */
+        .content-section {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.4s ease;
         }
 
-        .card-top {
+        .content-section.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .services-accordion {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
+            gap: 14px;
+            width: 100%;
         }
 
-        .card-badge {
-            background: rgba(255, 215, 0, 0.08);
+        .accordion-item {
+            background: rgba(18, 22, 30, 0.7);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item.open {
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
+        .accordion-header {
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion-header-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.15rem;
+        }
+
+        .accordion-tag {
+            background: rgba(255, 215, 0, 0.1);
             color: var(--yellow-accent);
             font-size: 0.75rem;
-            padding: 4px 11px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            padding: 3px 9px;
+            border-radius: 6px;
         }
 
-        .card h3 {
-            font-size: 1.35rem;
+        .accordion-chevron {
+            width: 20px;
+            height: 20px;
+            color: var(--yellow-accent);
+            transition: transform 0.3s ease;
         }
 
-        .card p {
+        .accordion-item.open .accordion-chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            background: rgba(12, 15, 20, 0.5);
+            border-top: 1px solid transparent;
+        }
+
+        .accordion-item.open .accordion-body {
+            max-height: 250px;
+            padding: 18px 20px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .accordion-desc {
             color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.65;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
         }
 
-        .card-btn {
-            width: 100%;
+        .order-btn {
+            display: inline-block;
             background: var(--yellow-accent);
             color: #0a0c10;
-            padding: 13px;
-            border-radius: 14px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
+            padding: 10px 24px;
+            border-radius: 12px;
             text-decoration: none;
             font-size: 0.95rem;
+            box-shadow: 0 0 15px var(--yellow-glow);
             transition: all 0.25s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
         }
 
-        .card-btn:hover {
+        .order-btn:hover {
             background: #ffe34d;
-            box-shadow: 0 0 24px var(--yellow-glow);
+            box-shadow: 0 0 22px var(--yellow-glow);
             transform: scale(1.02);
+        }
+
+        /* گالری رضایت‌های شما (۲۰ عکس اسکرین‌شات) */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+        }
+
+        .review-card {
+            background: rgba(18, 22, 30, 0.7);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 9 / 16;
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--yellow-accent);
+            box-shadow: 0 0 20px var(--yellow-glow);
+            transform: translateY(-4px);
+        }
+
+        .review-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #151820;
+        }
+
+        /* مودال بزرگ‌نمایی اسکرین‌شات */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(15px);
+            z-index: 9999999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.open {
+            display: flex;
+        }
+
+        .modal-img {
+            max-width: 90vw;
+            max-height: 85vh;
+            border-radius: 16px;
+            border: 2px solid var(--yellow-accent);
+            box-shadow: 0 0 35px var(--yellow-glow);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
         }
 
         /* ویژگی‌ها */
@@ -406,12 +490,11 @@
             flex-wrap: wrap;
             justify-content: space-around;
             gap: 20px;
-            padding: 26px 18px;
+            padding: 24px 18px;
             border: 1px solid var(--card-border);
             border-radius: 20px;
             background: rgba(18, 22, 30, 0.55);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
         }
 
         .feature-item {
@@ -419,8 +502,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 6px;
-            flex: 1 1 190px;
+            gap: 5px;
+            flex: 1 1 180px;
         }
 
         .feature-title {
@@ -435,10 +518,9 @@
 
         footer {
             text-align: center;
-            padding: 25px 0 15px 0;
+            padding: 15px 0;
             color: var(--text-muted);
             font-size: 0.85rem;
-            width: 100%;
         }
     </style>
 </head>
@@ -450,7 +532,7 @@
     <div class="ambient-glow halo-1"></div>
     <div class="ambient-glow halo-2"></div>
 
-    <!-- هدر ثابت در اسکرول -->
+    <!-- هدر کاملاً فیکس در تمام حالات -->
     <header>
         <div class="header-content">
             <a href="#" class="logo">
@@ -463,94 +545,131 @@
 
     <div class="app-container">
 
-        <!-- هیرو با بج جدید و تیتر یک‌خطی -->
+        <!-- هیرو -->
         <section class="hero">
             <div class="hero-tag">
                 <span class="pulse-dot"></span>
                 <span>از رقیبات جلو بزن !</span>
             </div>
             <h1>بزرگ‌ترین مجموعه خدمات تخصصی <span>روبیکا</span></h1>
-            <p>تمامی خدمات افزایش ممبر، فالور، لایک و بازدید برای کانال‌های روبیکا و صفحات روبینو با بالاترین کیفیت و سرعت استثنایی.</p>
+            <p>جهت مشاهده تعرفه‌ها و رضایت‌های مشتریان یکی از گزینه‌های زیر را انتخاب کنید:</p>
         </section>
 
-        <!-- دو باکس کنار هم حتی در موبایل -->
+        <!-- دو دکمه مربعی و بزرگ بغل هم -->
         <div class="quick-actions-row">
             
-            <!-- باکس خدمات روبیکا با آیکون -->
-            <a href="#services-section" class="quick-box">
-                <div class="quick-icon-wrapper">
+            <div class="square-btn active" id="btn-services" onclick="toggleSection('services')">
+                <div class="square-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                         <polyline points="2 17 12 22 22 17"></polyline>
                         <polyline points="2 12 12 17 22 12"></polyline>
                     </svg>
                 </div>
-                <span class="quick-box-title">خدمات روبیکا</span>
-            </a>
+                <span class="square-title">خدمات روبیکا</span>
+            </div>
 
-            <!-- باکس رضایت‌های شما با آیکون رضایت/ستاره -->
-            <a href="https://rubika.ir/mr_iIia" target="_blank" class="quick-box">
-                <div class="quick-icon-wrapper">
+            <div class="square-btn" id="btn-reviews" onclick="toggleSection('reviews')">
+                <div class="square-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                     </svg>
                 </div>
-                <span class="quick-box-title">رضایت های شما</span>
-            </a>
+                <span class="square-title">رضایت های شما</span>
+            </div>
 
         </div>
 
         <div class="section-divider"></div>
 
-        <!-- کارت‌های خدمات -->
-        <section class="services-wrapper" id="services-section">
-            
-            <div class="card">
-                <div class="card-top">
-                    <span class="card-badge">کانال روبیکا</span>
-                    <h3>ممبر کانال روبیکا</h3>
-                    <p>افزایش اعضای واقعی و فعال کانال، مناسب برای ایجاد اعتبار، جذب تبلیغات و رشد فروشگاه‌ها.</p>
+        <!-- ۱. لیست خدمات به صورت آکاردئون بازشونده -->
+        <div id="services-section" class="content-section show">
+            <div class="services-accordion">
+                
+                <!-- خدمت ۱ -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        <div class="accordion-header-title">
+                            <span class="accordion-tag">کانال</span>
+                            <span>ممبر کانال روبیکا</span>
+                        </div>
+                        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p class="accordion-desc">افزایش اعضای واقعی و فعال برای کانال روبیکا، بدون ریزش و مناسب جهت افزایش اعتبار، جذب سفارشات و ارتقای کانال‌های فروشگاهی.</p>
+                        <a href="https://rubika.ir/mr_iIia" target="_blank" class="order-btn">ثبت سفارش در روبیکا</a>
+                    </div>
                 </div>
-                <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
-            </div>
 
-            <div class="card">
-                <div class="card-top">
-                    <span class="card-badge">صفحات روبینو</span>
-                    <h3>فالور روبینو</h3>
-                    <p>ارتقای صفحه شخصی و بیزینسی در روبینو با جذب فالورهای باکیفیت و مناسب ورود به ویترین روبینو.</p>
+                <!-- خدمت ۲ -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        <div class="accordion-header-title">
+                            <span class="accordion-tag">روبینو</span>
+                            <span>فالور پیج روبینو</span>
+                        </div>
+                        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p class="accordion-desc">ارتقای فالورهای صفحه شخصی و بیزینسی در روبینو، با کیفیت استثنایی و مناسب برای رفتن پست‌ها به ویترین روبینو.</p>
+                        <a href="https://rubika.ir/mr_iIia" target="_blank" class="order-btn">ثبت سفارش در روبیکا</a>
+                    </div>
                 </div>
-                <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
-            </div>
 
-            <div class="card">
-                <div class="card-top">
-                    <span class="card-badge">پست روبینو</span>
-                    <h3>لایک پست روبینو</h3>
-                    <p>افزایش آنی لایک عکس‌ها و کلیپ‌های روبینو جهت بالا رفتن نرخ تعامل و رفتن به اکسپلور.</p>
+                <!-- خدمت ۳ -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        <div class="accordion-header-title">
+                            <span class="accordion-tag">روبینو</span>
+                            <span>لایک پست روبینو</span>
+                        </div>
+                        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p class="accordion-desc">افزایش فوری لایک برای عکس‌ها و ویدیوهای روبینو با سرعت بالا، مناسب برای افزایش اینگیجمنت و بازدید صفحه.</p>
+                        <a href="https://rubika.ir/mr_iIia" target="_blank" class="order-btn">ثبت سفارش در روبیکا</a>
+                    </div>
                 </div>
-                <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
-            </div>
 
-            <div class="card">
-                <div class="card-top">
-                    <span class="card-badge">کانال روبیکا</span>
-                    <h3>بازدید (سین) کانال</h3>
-                    <p>افزایش بازدید پست‌های کانال به صورت تک‌پست یا پکیج برای طبیعی نشان دادن آمار تعامل کانال.</p>
+                <!-- خدمت ۴ -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        <div class="accordion-header-title">
+                            <span class="accordion-tag">کانال</span>
+                            <span>بازدید (سین) پست‌های کانال</span>
+                        </div>
+                        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p class="accordion-desc">افزایش بازدید تک‌پست یا پکیج‌های چندتایی پست‌های کانال برای طبیعی و معتبر جلوه دادن آمار کانال شما.</p>
+                        <a href="https://rubika.ir/mr_iIia" target="_blank" class="order-btn">ثبت سفارش در روبیکا</a>
+                    </div>
                 </div>
-                <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
-            </div>
 
-            <div class="card">
-                <div class="card-top">
-                    <span class="card-badge">ویدیو روبینو</span>
-                    <h3>بازدید ویدیو روبینو</h3>
-                    <p>افزایش چشمگیر ویو کلیپ‌ها و ریلزهای روبینو برای افزایش اعتبار و تعامل صفحه شما.</p>
+                <!-- خدمت ۵ -->
+                <div class="accordion-item" onclick="toggleAccordion(this)">
+                    <div class="accordion-header">
+                        <div class="accordion-header-title">
+                            <span class="accordion-tag">روبینو</span>
+                            <span>بازدید ویدیو روبینو</span>
+                        </div>
+                        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                    <div class="accordion-body">
+                        <p class="accordion-desc">افزایش ویو کلیپ‌ها و ریلزهای روبینو جهت بالا رفتن رتبه پیج در الگوریتم روبیکا و جذب تعامل میلیونی.</p>
+                        <a href="https://rubika.ir/mr_iIia" target="_blank" class="order-btn">ثبت سفارش در روبیکا</a>
+                    </div>
                 </div>
-                <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
-            </div>
 
-        </section>
+            </div>
+        </div>
+
+        <!-- ۲. بخش اسکرین‌شات‌های رضایت مشتری (۲۰ عکس) -->
+        <div id="reviews-section" class="content-section">
+            <div class="reviews-grid" id="reviews-grid">
+                <!-- تصاویر rezayat(1).jpg تا rezayat(20).jpg توسط اسکریپت رندر می‌شوند -->
+            </div>
+        </div>
 
         <div class="section-divider"></div>
 
@@ -570,17 +689,72 @@
             </div>
         </div>
 
-        <div class="section-divider"></div>
-
-        <!-- فوتر -->
         <footer>
             <p>© کلیه حقوق برای روبیکس پنل محفوظ است.</p>
         </footer>
 
     </div>
 
-    <!-- اسکریپت امنیتی جهت جلوگیری از کپی و راست‌کلیک -->
+    <!-- مودال پاپ‌آپ باز شدن اسکرین‌شات -->
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-img" id="modalImg" src="">
+    </div>
+
+    <!-- اسکریپت کنترل اکشن‌ها -->
     <script>
+        // ساخت خودکار کارت‌های ۲۰ اسکرین‌شات رضایت
+        const reviewsGrid = document.getElementById('reviews-grid');
+        for (let i = 1; i <= 20; i++) {
+            const card = document.createElement('div');
+            card.className = 'review-card';
+            card.onclick = () => openModal(`rezayat(${i}).jpg`);
+            card.innerHTML = `<img src="rezayat(${i}).jpg" alt="رضایت مشتری ${i}" loading="lazy" onerror="this.src='icon.jpg'">`;
+            reviewsGrid.appendChild(card);
+        }
+
+        // سوئیچ بین خدمات و رضایت‌ها
+        function toggleSection(type) {
+            const btnServices = document.getElementById('btn-services');
+            const btnReviews = document.getElementById('btn-reviews');
+            const secServices = document.getElementById('services-section');
+            const secReviews = document.getElementById('reviews-section');
+
+            if (type === 'services') {
+                btnServices.classList.add('active');
+                btnReviews.classList.remove('active');
+                secServices.classList.add('show');
+                secReviews.classList.remove('show');
+            } else {
+                btnReviews.classList.add('active');
+                btnServices.classList.remove('active');
+                secReviews.classList.add('show');
+                secServices.classList.remove('show');
+            }
+        }
+
+        // آکاردئون لیست خدمات
+        function toggleAccordion(element) {
+            const isOpen = element.classList.contains('open');
+            document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('open'));
+            if (!isOpen) {
+                element.classList.add('open');
+            }
+        }
+
+        // باز و بسته شدن مودال تصاویر رضایت
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = src;
+            modal.classList.add('open');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('open');
+        }
+
+        // جلوگیری از کپی و راست‌کلیک
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.addEventListener('keydown', e => {
             if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
