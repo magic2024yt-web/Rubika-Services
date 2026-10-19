@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>روبیکس پنل | خدمات تخصصی روبیکا و روبینو</title>
+    <title>روبیکس پنل | بزرگ ترین مجموعه خدمات تخصصی روبیکا</title>
     
     <!-- فونت پیدا با سنگین‌ترین وزن -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/AmirAbbasVafaee/persian-fonts-cdn@main/css/peyda.css">
 
     <style>
         :root {
-            --bg-color: #0b0d10;          /* طوسی بسیار تیره پس‌زمینه */
-            --card-bg: #14171e;           /* طوسی تیره کارت‌ها */
-            --card-border: #222733;       /* حاشیه‌ها */
-            --yellow-accent: #ffd700;     /* زرد لوگو */
-            --yellow-hover: #ffe44d;      /* زرد روشن‌تر */
-            --text-primary: #ffffff;      /* متن سفید */
-            --text-muted: #8b93a3;        /* متن طوسی روشن */
-            --yellow-glow: rgba(255, 215, 0, 0.18); /* درخشش زرد */
+            --bg-color: #0a0c10;
+            --card-bg: rgba(18, 22, 30, 0.65);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --yellow-accent: #ffd700;
+            --yellow-glow: rgba(255, 215, 0, 0.28);
+            --text-primary: #ffffff;
+            --text-muted: #959fad;
         }
 
         * {
@@ -38,49 +37,67 @@
             line-height: 1.6;
         }
 
-        /* لایه نوری پس‌زمینه زرد و طوسی */
-        .glow-wrapper {
+        /* تکسچر گرید شطرنجی (الهام گرفته شده از لوگوی RP) */
+        .grid-background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 215, 0, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.035) 1px, transparent 1px);
+            background-size: 38px 38px;
             pointer-events: none;
             z-index: 0;
         }
 
-        .glow-sphere {
-            position: absolute;
+        /* لایه افکت نویز شنی ظریف */
+        .noise-layer {
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* هاله‌های نوری زرد شناور با انیمیشن */
+        .ambient-glow {
+            position: fixed;
             border-radius: 50%;
-            filter: blur(95px);
-            opacity: 0.6;
+            filter: blur(110px);
+            pointer-events: none;
+            z-index: 0;
         }
 
-        .glow-yellow {
-            width: 280px;
-            height: 280px;
+        .halo-1 {
+            width: 380px;
+            height: 380px;
+            background: rgba(255, 215, 0, 0.12);
+            top: 5%;
+            right: -100px;
+            animation: floatGlow 9s ease-in-out infinite alternate;
+        }
+
+        .halo-2 {
+            width: 340px;
+            height: 340px;
             background: rgba(255, 215, 0, 0.08);
-            top: 10%;
-            right: -60px;
+            bottom: 12%;
+            left: -90px;
+            animation: floatGlow 11s ease-in-out infinite alternate-reverse;
         }
 
-        .glow-dark {
-            width: 320px;
-            height: 320px;
-            background: rgba(255, 255, 255, 0.03);
-            bottom: 10%;
-            left: -80px;
+        @keyframes floatGlow {
+            0% { transform: translateY(0px) scale(1); }
+            100% { transform: translateY(45px) scale(1.15); }
         }
 
-        /* هدر ثابت در بالا (Sticky Header) */
+        /* هدر شیشه‌ای و چسبان */
         header {
             position: sticky;
             top: 0;
             width: 100%;
-            background: rgba(11, 13, 16, 0.85);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(10, 12, 16, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--card-border);
             z-index: 999;
             padding: 12px 20px;
@@ -97,27 +114,26 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
             color: var(--text-primary);
         }
 
         .logo-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
             object-fit: cover;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 0 12px var(--yellow-glow);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 15px var(--yellow-glow);
         }
 
         .logo-title {
             font-size: 1.25rem;
-            letter-spacing: -0.5px;
         }
 
         .contact-btn {
-            background: transparent;
+            background: rgba(255, 215, 0, 0.08);
             color: var(--yellow-accent);
             border: 1.5px solid var(--yellow-accent);
             padding: 8px 18px;
@@ -126,25 +142,27 @@
             font-size: 0.85rem;
             white-space: nowrap;
             transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
         .contact-btn:hover {
             background: var(--yellow-accent);
-            color: #0b0d10;
-            box-shadow: 0 0 18px var(--yellow-glow);
+            color: #0a0c10;
+            box-shadow: 0 0 20px var(--yellow-glow);
+            transform: translateY(-2px);
         }
 
-        /* کانتینر اصلی محتوا */
+        /* کانتینر اصلی */
         .app-container {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             width: 100%;
             max-width: 1050px;
             margin: 0 auto;
-            padding: 24px 18px 40px 18px;
+            padding: 30px 18px 50px 18px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 45px;
         }
 
         /* بخش هیرو */
@@ -153,125 +171,170 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 16px;
-            padding: 25px 0 10px 0;
-            width: 100%;
+            gap: 18px;
+            padding: 20px 0 10px 0;
         }
 
+        /* بج کیفیت بالا با گوی زرد چشمک‌زن */
         .hero-tag {
-            background: #191c25;
-            border: 1px solid var(--card-border);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: var(--yellow-accent);
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(255, 215, 0, 0.07);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            color: #fff;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+        }
+
+        /* گوی چشمک‌زن */
+        .pulse-dot {
+            width: 9px;
+            height: 9px;
+            background-color: var(--yellow-accent);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--yellow-accent);
+            animation: pulseGlow 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1.1);
+                box-shadow: 0 0 14px var(--yellow-accent), 0 0 4px #fff;
+            }
+            50% {
+                opacity: 0.3;
+                transform: scale(0.75);
+                box-shadow: 0 0 4px var(--yellow-accent);
+            }
         }
 
         .hero h1 {
-            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            font-size: clamp(1.9rem, 6.5vw, 3rem);
             line-height: 1.35;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
-            max-width: 700px;
+            max-width: 760px;
         }
 
         .hero h1 span {
             color: var(--yellow-accent);
-            text-shadow: 0 0 25px var(--yellow-glow);
+            text-shadow: 0 0 30px var(--yellow-glow);
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: clamp(0.9rem, 3.5vw, 1.05rem);
-            max-width: 580px;
-            line-height: 1.7;
+            font-size: clamp(0.92rem, 3.8vw, 1.08rem);
+            max-width: 590px;
+            line-height: 1.75;
         }
 
-        /* کارت‌های خدمات */
+        /* سیستم گرید و کارت‌های شیشه‌ای (Glassmorphism) */
         .services-wrapper {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 22px;
             width: 100%;
             justify-content: center;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
             border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 24px;
+            border-radius: 20px;
+            padding: 26px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            gap: 20px;
+            gap: 22px;
             flex: 1 1 300px;
             max-width: 100%;
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        /* خط افکت شیشه‌ای در لبه بالایی کارت */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.35), transparent);
         }
 
         .card:hover {
-            border-color: rgba(255, 215, 0, 0.4);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 22px var(--yellow-glow);
-            transform: translateY(-3px);
+            transform: translateY(-7px);
+            border-color: rgba(255, 215, 0, 0.38);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px var(--yellow-glow);
         }
 
         .card-top {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
         }
 
         .card-badge {
-            background: #1e222c;
+            background: rgba(255, 215, 0, 0.08);
             color: var(--yellow-accent);
             font-size: 0.75rem;
-            padding: 4px 10px;
+            padding: 4px 11px;
             border-radius: 8px;
-            border: 1px solid rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
         }
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.92rem;
+            line-height: 1.65;
         }
 
         .card-btn {
             width: 100%;
             background: var(--yellow-accent);
-            color: #0b0d10;
-            padding: 12px;
-            border-radius: 12px;
+            color: #0a0c10;
+            padding: 13px;
+            border-radius: 14px;
             border: none;
             cursor: pointer;
             text-align: center;
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.15);
         }
 
         .card-btn:hover {
-            background: var(--yellow-hover);
-            box-shadow: 0 0 20px var(--yellow-glow);
+            background: #ffe34d;
+            box-shadow: 0 0 24px var(--yellow-glow);
+            transform: scale(1.02);
         }
 
-        /* نوار ویژگی‌ها */
+        /* نوار ویژگی‌های گلس‌مورفیک */
         .features-strip {
             width: 100%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             gap: 20px;
-            padding: 24px 16px;
+            padding: 26px 18px;
             border: 1px solid var(--card-border);
-            border-radius: 18px;
-            background: rgba(20, 23, 30, 0.7);
-            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            background: rgba(18, 22, 30, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         .feature-item {
@@ -279,8 +342,8 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 5px;
-            flex: 1 1 180px;
+            gap: 6px;
+            flex: 1 1 190px;
         }
 
         .feature-title {
@@ -293,10 +356,9 @@
             font-size: 0.85rem;
         }
 
-        /* فوتر */
         footer {
             text-align: center;
-            padding: 20px 0 10px 0;
+            padding: 25px 0 15px 0;
             border-top: 1px solid var(--card-border);
             color: var(--text-muted);
             font-size: 0.85rem;
@@ -306,13 +368,15 @@
 </head>
 <body>
 
-    <!-- لایه نوری پس‌زمینه -->
-    <div class="glow-wrapper">
-        <div class="glow-sphere glow-yellow"></div>
-        <div class="glow-sphere glow-dark"></div>
-    </div>
+    <!-- تکسچر شبکه شطرنجی لوگو + نویز -->
+    <div class="grid-background"></div>
+    <div class="noise-layer"></div>
 
-    <!-- هدر ثابت در تمام اسکرین‌ها -->
+    <!-- هاله‌های زرد نئونی شناور -->
+    <div class="ambient-glow halo-1"></div>
+    <div class="ambient-glow halo-2"></div>
+
+    <!-- هدر ثابت شیشه‌ای -->
     <header>
         <div class="header-content">
             <a href="#" class="logo">
@@ -323,17 +387,20 @@
         </div>
     </header>
 
-    <!-- کانتینر اصلی صفحه -->
+    <!-- کانتینر اصلی -->
     <div class="app-container">
 
-        <!-- بخش معرفی اصلی -->
+        <!-- هیرو سکشن -->
         <section class="hero">
-            <span class="hero-tag">سریع، تضمینی و بدون افت</span>
-            <h1>ارتقاء تخصصی کانال و پیج در <span>روبیکا</span></h1>
-            <p>تمامی خدمات افزایش ممبر، فالور، لایک و بازدید برای کانال‌های روبیکا و روبینو با بالاترین کیفیت و سرعت استثنایی.</p>
+            <div class="hero-tag">
+                <span class="pulse-dot"></span>
+                <span>کیفیت بالا</span>
+            </div>
+            <h1>بزرگ‌ترین مجموعه خدمات تخصصی <span>روبیکا</span></h1>
+            <p>تمامی خدمات افزایش ممبر، فالور، لایک و بازدید برای کانال‌های روبیکا و صفحات روبینو با بالاترین کیفیت و سرعت استثنایی.</p>
         </section>
 
-        <!-- کارت‌های خدمات متصل به روبیکا mr_iIia -->
+        <!-- لیست کارت‌ها با افکت گلس‌مورفیسم -->
         <section class="services-wrapper">
             
             <div class="card">
@@ -358,7 +425,7 @@
                 <div class="card-top">
                     <span class="card-badge">پست روبینو</span>
                     <h3>لایک پست روبینو</h3>
-                    <p>افزایش آنی لایک عکس‌ها و کلیپ‌های روبینو جهت بالا رفتن نرخ تعامل و اکسپلور.</p>
+                    <p>افزایش آنی لایک عکس‌ها و کلیپ‌های روبینو جهت بالا رفتن نرخ تعامل و رفتن به اکسپلور.</p>
                 </div>
                 <a href="https://rubika.ir/mr_iIia" target="_blank" class="card-btn">ثبت سفارش</a>
             </div>
@@ -383,7 +450,7 @@
 
         </section>
 
-        <!-- نوار مزایا (اصلاح‌شده) -->
+        <!-- ویژگی‌های گلس -->
         <div class="features-strip">
             <div class="feature-item">
                 <div class="feature-title">ثبت سفارش آنی</div>
@@ -395,7 +462,7 @@
             </div>
             <div class="feature-item">
                 <div class="feature-title">امنیت ۱۰۰٪ تضمینی</div>
-                <div class="feature-sub">بدون نیاز به پسورد یا دسترسی به اکانت</div>
+                <div class="feature-sub">بدون نیاز به پسورد یا اطلاعات حساس</div>
             </div>
         </div>
 
