@@ -49,7 +49,7 @@
             overflow-x: hidden;
         }
 
-        /* تکسچر گرید شطرنجی جذاب */
+        /* تکسچر گرید شطرنجی */
         .grid-background {
             position: fixed;
             inset: 0;
@@ -61,7 +61,7 @@
             z-index: 0;
         }
 
-        /* هاله‌های نوری شناور طلایی با شتاب‌دهنده گرافیکی (بدون لگ) */
+        /* هاله‌های نوری طلایی شناور */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -229,7 +229,7 @@
             line-height: 1.75;
         }
 
-        /* دو دکمه مربعی گلس‌مورفیک */
+        /* دو دکمه مربعی اصلی */
         .quick-actions-row {
             display: flex;
             flex-direction: row;
@@ -314,7 +314,7 @@
             width: 100%;
         }
 
-        /* آکاردئون با باز شدن نرم کشویی (Smooth Transition) */
+        /* آکاردئون با باز شدن نرم کشویی */
         .services-accordion {
             display: flex;
             flex-direction: column;
@@ -383,7 +383,7 @@
             transform: rotate(180deg);
         }
 
-        /* بدنه آکاردئون با انیمیشن روان و پیوسته */
+        /* بدنه آکاردئون با انیمیشن پیوسته */
         .accordion-body {
             max-height: 0;
             overflow: hidden;
@@ -485,7 +485,7 @@
             flex-shrink: 0;
         }
 
-        /* دکمه ثبت سفارش با فونت سنگین و هایلایت نوری */
+        /* دکمه ثبت سفارش با فونت سنگین و هایلایت */
         .order-btn {
             display: block;
             width: 100%;
@@ -648,6 +648,7 @@
             gap: 8px;
             width: 100%;
             white-space: nowrap !important;
+            overflow: hidden;
         }
 
         .selected-order-info span:first-child {
@@ -873,8 +874,8 @@
             <div class="services-accordion">
                 
                 <!-- ۱. ممبر کانال روبیکا -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">کانال</span>
                             <span>ممبر کانال روبیکا</span>
@@ -882,13 +883,13 @@
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="accordion-body">
-                        <div class="sub-toggle-tabs" onclick="event.stopPropagation()">
+                        <div class="sub-toggle-tabs">
                             <div class="sub-tab-btn active" id="btn-tab-member-fake" onclick="switchSubTab('member', 'fake')">فیک</div>
                             <div class="sub-tab-btn" id="btn-tab-member-real" onclick="switchSubTab('member', 'real')">واقعی</div>
                         </div>
 
                         <!-- ممبر فیک -->
-                        <div class="sub-content-panel show" id="panel-member-fake" onclick="event.stopPropagation()">
+                        <div class="sub-content-panel show" id="panel-member-fake">
                             <p class="accordion-desc">افزایش اعضای فیک و بدون ریزش برای کانال، ایده‌آل جهت اعتمادسازی اولیه و بالا بردن آمار کانال.</p>
                             <div class="price-banner">
                                 <span>قیمت ۱,۰۰۰ ممبر فیک:</span>
@@ -898,7 +899,7 @@
                         </div>
 
                         <!-- ممبر واقعی -->
-                        <div class="sub-content-panel" id="panel-member-real" onclick="event.stopPropagation()">
+                        <div class="sub-content-panel" id="panel-member-real">
                             <p class="accordion-desc">افزایش اعضای واقعی و فعال برای کانال روبیکا (با احتمال ریزش)، کاملاً مناسب کسب‌وکارها و فروشگاه‌ها.</p>
                             <div class="price-banner">
                                 <span>قیمت ۱,۰۰۰ ممبر واقعی:</span>
@@ -910,15 +911,15 @@
                 </div>
 
                 <!-- ۲. بازدید (سین) پست‌های کانال -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">کانال</span>
                             <span>بازدید (سین) پست‌های کانال</span>
                         </div>
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
-                    <div class="accordion-body" onclick="event.stopPropagation()">
+                    <div class="accordion-body">
                         <p class="accordion-desc" style="margin-bottom: 12px;">افزایش سریع و طبیعی بازدید برای تک‌پست یا چندین پست اخیر کانال شما:</p>
                         <div class="price-list-wrap">
                             <div class="price-banner"><span>۱,۰۰۰ بازدید پست آخر:</span><span class="price-highlight">۲۰,۰۰۰ تومان</span></div>
@@ -932,15 +933,15 @@
                 </div>
 
                 <!-- ۳. ری‌اکشن پست‌های کانال -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">کانال</span>
                             <span>ری‌اکشن پست‌های کانال</span>
                         </div>
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
-                    <div class="accordion-body" onclick="event.stopPropagation()">
+                    <div class="accordion-body">
                         <p class="accordion-desc" style="margin-bottom: 12px;">ارسال ری‌اکشن‌ها و واکنش‌های متنوع (قلب، لایک، آتش و...) روی پست‌های کانال:</p>
                         <div class="price-banner" style="margin-bottom: 14px;">
                             <span>قیمت هر ۱,۰۰۰ ری‌اکشن:</span>
@@ -951,8 +952,8 @@
                 </div>
 
                 <!-- ۴. فالور پیج روبینو -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">روبینو</span>
                             <span>فالور پیج روبینو</span>
@@ -960,13 +961,13 @@
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="accordion-body">
-                        <div class="sub-toggle-tabs" onclick="event.stopPropagation()">
+                        <div class="sub-toggle-tabs">
                             <div class="sub-tab-btn active" id="btn-tab-follower-fake" onclick="switchSubTab('follower', 'fake')">فیک</div>
                             <div class="sub-tab-btn" id="btn-tab-follower-real" onclick="switchSubTab('follower', 'real')">واقعی</div>
                         </div>
 
                         <!-- فالور فیک -->
-                        <div class="sub-content-panel show" id="panel-follower-fake" onclick="event.stopPropagation()">
+                        <div class="sub-content-panel show" id="panel-follower-fake">
                             <p class="accordion-desc">افزایش فالور فیک باکیفیت و بدون ریزش جهت اعتبارسازی و بالا بردن عدد فالور پیج روبینو.</p>
                             <div class="price-banner">
                                 <span>قیمت ۱,۰۰۰ فالور فیک:</span>
@@ -976,7 +977,7 @@
                         </div>
 
                         <!-- فالور واقعی -->
-                        <div class="sub-content-panel" id="panel-follower-real" onclick="event.stopPropagation()">
+                        <div class="sub-content-panel" id="panel-follower-real">
                             <p class="accordion-desc">افزایش فالور واقعی و فعال روبینو (با احتمال ریزش)، با تعامل مناسب جهت ارتقای پیج و ورود به ویترین.</p>
                             <div class="price-banner">
                                 <span>قیمت ۱,۰۰۰ فالور واقعی:</span>
@@ -988,15 +989,15 @@
                 </div>
 
                 <!-- ۵. لایک پست روبینو -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">روبینو</span>
                             <span>لایک پست روبینو</span>
                         </div>
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
-                    <div class="accordion-body" onclick="event.stopPropagation()">
+                    <div class="accordion-body">
                         <p class="accordion-desc" style="margin-bottom: 12px;">افزایش فوری لایک برای عکس‌ها و کلیپ‌های روبینو با کیفیت عالی:</p>
                         <div class="price-banner" style="margin-bottom: 14px;">
                             <span>قیمت هر ۱,۰۰۰ لایک روبینو:</span>
@@ -1007,15 +1008,15 @@
                 </div>
 
                 <!-- ۶. بازدید ویدیو روبینو -->
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag">روبینو</span>
                             <span>بازدید ویدیو روبینو</span>
                         </div>
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
-                    <div class="accordion-body" onclick="event.stopPropagation()">
+                    <div class="accordion-body">
                         <p class="accordion-desc" style="margin-bottom: 12px;">افزایش چشمگیر ویو کلیپ‌ها و ریلزهای روبینو جهت رفتن به ویترین:</p>
                         <div class="price-banner" style="margin-bottom: 14px;">
                             <span>قیمت هر ۱,۰۰۰ بازدید ویدیو:</span>
@@ -1026,15 +1027,15 @@
                 </div>
 
                 <!-- ۷. سایر خدمات -->
-                <div class="accordion-item special-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header">
+                <div class="accordion-item special-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this.parentElement)">
                         <div class="accordion-header-title">
                             <span class="accordion-tag special-tag">ویژه</span>
                             <span>سایر خدمات</span>
                         </div>
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
-                    <div class="accordion-body" onclick="event.stopPropagation()">
+                    <div class="accordion-body">
                         <p class="accordion-desc" style="margin-bottom: 16px; font-size: 1rem; color: #ffffff;">سایر خدمات روبیکا از جمله رای نظرسنجی ، بازدید لایو ، ... موجوده !</p>
                         <a href="https://rubika.ir/i_4_iIia" target="_blank" class="order-btn">استعلام قیمت در روبیکا</a>
                     </div>
@@ -1118,6 +1119,7 @@
         history.replaceState({ page: 'home' }, '');
 
         let activeModalId = null;
+        let isClosingViaButton = false;
 
         function openModalSafe(modalId) {
             activeModalId = modalId;
@@ -1128,21 +1130,22 @@
         function closeModalSafe(modalId, isFromPopstate = false) {
             const modal = document.getElementById(modalId);
             if (modal) modal.classList.remove('open');
-            
-            if (activeModalId === modalId) {
-                activeModalId = null;
-            }
+            activeModalId = null;
 
             if (!isFromPopstate && history.state && history.state.modal === modalId) {
+                isClosingViaButton = true;
                 history.back();
             }
         }
 
+        // عملکرد هوشمند دکمه بازگشت بدون اسکرول تصادفی
         window.addEventListener('popstate', (e) => {
+            if (isClosingViaButton) {
+                isClosingViaButton = false;
+                return;
+            }
             if (activeModalId) {
                 closeModalSafe(activeModalId, true);
-            } else if (window.scrollY > 150) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
 
@@ -1152,10 +1155,12 @@
             openModalSafe('paymentModal');
         }
 
+        // سیستم کپی ۱۰۰٪ تضمینی و فال‌بک (حتی در محیط بدون SSL و فایل محلی)
         function copyCardNumber() {
             const rawCard = '6104338702037264';
-            navigator.clipboard.writeText(rawCard).then(() => {
-                const btn = document.getElementById('copyBtn');
+            const btn = document.getElementById('copyBtn');
+
+            function showCopySuccess() {
                 btn.innerText = 'کپی شد! ✔';
                 btn.style.background = '#ffd700';
                 btn.style.color = '#000';
@@ -1164,10 +1169,42 @@
                     btn.style.background = 'rgba(255, 215, 0, 0.15)';
                     btn.style.color = '#ffd700';
                 }, 2000);
-            });
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(rawCard)
+                    .then(showCopySuccess)
+                    .catch(() => fallbackCopy(rawCard, showCopySuccess));
+            } else {
+                fallbackCopy(rawCard, showCopySuccess);
+            }
         }
 
-        // لود تنبل و خودکار عکس‌های رضایت
+        function fallbackCopy(text, callback) {
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                textArea.style.top = "-999999px";
+                textArea.setAttribute("readonly", "");
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                if (successful) {
+                    callback();
+                } else {
+                    prompt("شماره کارت جهت کپی دستی:", text);
+                }
+            } catch (err) {
+                prompt("شماره کارت جهت کپی دستی:", text);
+            }
+        }
+
+        // لود تنبل عکس‌های رضایت
         let reviewsLoaded = false;
         function loadReviewsLazy() {
             if (reviewsLoaded) return;
@@ -1245,6 +1282,7 @@
             }
         }
 
+        // عملکرد بی‌نقص آکاردئون با کلیک فقط روی هدر
         function toggleAccordion(element) {
             const isOpen = element.classList.contains('open');
             document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('open'));
