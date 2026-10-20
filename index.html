@@ -14,8 +14,8 @@
 
     <style>
         :root {
-            --bg-color: #0a0c10;
-            --card-bg: rgba(18, 22, 30, 0.65);
+            --bg-color: #060709;          /* مشکی عمیق و شیک */
+            --card-bg: rgba(16, 19, 26, 0.72);
             --card-border: rgba(255, 255, 255, 0.08);
             --yellow-accent: #ffd700;
             --yellow-glow: rgba(255, 215, 0, 0.28);
@@ -44,7 +44,7 @@
             scroll-behavior: smooth;
         }
 
-        /* تکسچر گرید شطرنجی */
+        /* تکسچر گرید شطرنجی با حرکت روان به سمت پایین */
         .grid-background {
             position: fixed;
             inset: 0;
@@ -54,9 +54,20 @@
             background-size: 38px 38px;
             pointer-events: none;
             z-index: 0;
+            animation: gridScrollDown 2.2s linear infinite;
+            will-change: background-position;
         }
 
-        /* لایه نویز */
+        @keyframes gridScrollDown {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 0 38px;
+            }
+        }
+
+        /* لایه نویز شنی */
         .noise-layer {
             position: fixed;
             inset: 0;
@@ -69,7 +80,7 @@
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
-            filter: blur(110px);
+            filter: blur(120px);
             pointer-events: none;
             z-index: 0;
         }
@@ -77,7 +88,7 @@
         .halo-1 {
             width: 380px;
             height: 380px;
-            background: rgba(255, 215, 0, 0.12);
+            background: rgba(255, 215, 0, 0.1);
             top: 5%;
             right: -100px;
             animation: floatGlow 9s ease-in-out infinite alternate;
@@ -86,7 +97,7 @@
         .halo-2 {
             width: 340px;
             height: 340px;
-            background: rgba(255, 215, 0, 0.08);
+            background: rgba(255, 215, 0, 0.06);
             bottom: 12%;
             left: -90px;
             animation: floatGlow 11s ease-in-out infinite alternate-reverse;
@@ -97,6 +108,31 @@
             100% { transform: translateY(45px) scale(1.15); }
         }
 
+        /* کنترل تاریکی پس‌زمینه ویژه موبایل (کاهش زردی و چشم‌نوازی تیره) */
+        @media (max-width: 768px) {
+            .ambient-glow {
+                opacity: 0.22 !important;
+                filter: blur(140px) !important;
+            }
+            .halo-1 {
+                width: 220px !important;
+                height: 220px !important;
+                background: rgba(255, 215, 0, 0.05) !important;
+                top: 0% !important;
+                right: -50px !important;
+            }
+            .halo-2 {
+                width: 240px !important;
+                height: 240px !important;
+                background: rgba(255, 215, 0, 0.04) !important;
+                bottom: 8% !important;
+                left: -60px !important;
+            }
+            .grid-background {
+                opacity: 0.65 !important;
+            }
+        }
+
         /* هدر ثابت */
         header {
             position: fixed;
@@ -104,7 +140,7 @@
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(10, 12, 16, 0.88);
+            background: rgba(6, 7, 9, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
@@ -467,13 +503,13 @@
             padding: 11px 13px;
             color: #ffffff;
             font-size: clamp(0.75rem, 2.9vw, 0.92rem);
-            white-space: nowrap;
+            white-space: nowrap !important;
             gap: 8px;
             overflow: hidden;
         }
 
         .price-banner span:first-child {
-            white-space: nowrap;
+            white-space: nowrap !important;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -482,7 +518,7 @@
             color: var(--yellow-accent);
             font-size: clamp(0.84rem, 3.2vw, 1.05rem);
             text-shadow: 0 0 10px var(--yellow-glow);
-            white-space: nowrap;
+            white-space: nowrap !important;
             flex-shrink: 0;
         }
 
@@ -633,26 +669,36 @@
             color: var(--text-muted);
         }
 
-        /* نوار جزئیات سفارش انتخاب‌شده */
+        /* نوار جزئیات سفارش انتخابی - ۱۰۰٪ فیکس شده در یک خط افقی */
         .selected-order-info {
             background: rgba(255, 215, 0, 0.08);
             border: 1px solid rgba(255, 215, 0, 0.25);
             border-radius: 14px;
             padding: 12px 14px;
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            gap: 8px;
+            width: 100%;
+            white-space: nowrap !important;
         }
 
         .selected-order-info span:first-child {
-            font-size: 0.9rem;
-            color: #fff;
+            font-size: clamp(0.75rem, 2.8vw, 0.92rem) !important;
+            color: #ffffff;
+            white-space: nowrap !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
         }
 
         .selected-order-price {
             color: var(--yellow-accent);
-            font-size: 1.05rem;
+            font-size: clamp(0.85rem, 3.2vw, 1.05rem) !important;
             text-shadow: 0 0 12px var(--yellow-glow);
+            white-space: nowrap !important;
+            flex-shrink: 0;
         }
 
         /* کادر کارت بانکی */
@@ -668,7 +714,7 @@
             width: 100%;
         }
 
-        /* ردیف شماره کارت و دکمه کپی شماره کارت - ۱۰۰٪ فیکس در یک خط */
+        /* ردیف شماره کارت و دکمه کپی شماره کارت - ۱۰۰٪ در یک خط */
         .card-number-row {
             display: flex;
             align-items: center;
@@ -684,7 +730,7 @@
             letter-spacing: 0.5px;
             color: #ffffff;
             font-family: monospace, 'Peyda', sans-serif !important;
-            white-space: nowrap !important; /* جلوگیری قطعی از شکستن خط */
+            white-space: nowrap !important;
             flex-shrink: 0;
         }
 
@@ -799,6 +845,7 @@
 </head>
 <body>
 
+    <!-- تکسچر گرید متحرک به سمت پایین -->
     <div class="grid-background"></div>
     <div class="noise-layer"></div>
 
@@ -1074,7 +1121,7 @@
 
     </div>
 
-    <!-- پاپ‌آپ پرداخت با فیکس قطعی یک‌خطی بودن کارت -->
+    <!-- پاپ‌آپ پرداخت با فیکس قطعی یک‌خطی بودن مشخصات و کارت -->
     <div class="modal" id="paymentModal" onclick="closeModalSafe('paymentModal')">
         <div class="payment-box" onclick="event.stopPropagation()">
             <span class="modal-close-btn" onclick="closeModalSafe('paymentModal')">&times;</span>
@@ -1084,7 +1131,7 @@
                 <p>مبلغ را کارت به کارت کرده و رسید را ارسال کنید</p>
             </div>
 
-            <!-- مشخصات سفارش -->
+            <!-- مشخصات سفارش انتخابی - کاملاً در یک خط تراز بدون شکستن -->
             <div class="selected-order-info">
                 <span id="modal-service-name">سرویس انتخابی</span>
                 <span class="selected-order-price" id="modal-service-price">۰ تومان</span>
@@ -1148,12 +1195,14 @@
             }
         });
 
+        // باز شدن پاپ‌آپ پرداخت با فیکس عنوان و قیمت
         function openPaymentModal(serviceName, price) {
             document.getElementById('modal-service-name').innerText = serviceName;
             document.getElementById('modal-service-price').innerText = price;
             openModalSafe('paymentModal');
         }
 
+        // کپی شماره کارت
         function copyCardNumber() {
             const rawCard = '6104338702037264';
             navigator.clipboard.writeText(rawCard).then(() => {
