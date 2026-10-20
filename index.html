@@ -14,14 +14,13 @@
 
     <style>
         :root {
-            --bg-color: #090a0d;          /* مشکی / طوسی زغالی تیره */
-            --card-bg: rgba(19, 21, 28, 0.7);
+            --bg-color: #0a0c10;
+            --card-bg: rgba(18, 22, 30, 0.65);
             --card-border: rgba(255, 255, 255, 0.08);
-            --orange-accent: #ff7700;     /* نارنجی نئونی استخراج شده از لوگو */
-            --orange-hover: #ff912b;      /* نارنجی روشن‌تر برای حالت هاور */
-            --orange-glow: rgba(255, 119, 0, 0.32); /* درخشش نارنجی */
+            --yellow-accent: #ffd700;
+            --yellow-glow: rgba(255, 215, 0, 0.28);
             --text-primary: #ffffff;
-            --text-muted: #9ba4b2;
+            --text-muted: #959fad;
         }
 
         /* قفل کپی متون */
@@ -45,13 +44,13 @@
             scroll-behavior: smooth;
         }
 
-        /* تکسچر گرید شطرنجی نارنجی با الهام از لوگوی جدید */
+        /* تکسچر گرید شطرنجی */
         .grid-background {
             position: fixed;
             inset: 0;
             background-image: 
-                linear-gradient(rgba(255, 119, 0, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 119, 0, 0.04) 1px, transparent 1px);
+                linear-gradient(rgba(255, 215, 0, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 215, 0, 0.035) 1px, transparent 1px);
             background-size: 38px 38px;
             pointer-events: none;
             z-index: 0;
@@ -66,11 +65,11 @@
             z-index: 1;
         }
 
-        /* هاله‌های نوری نارنجی شناور */
+        /* هاله‌های نوری */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
-            filter: blur(115px);
+            filter: blur(110px);
             pointer-events: none;
             z-index: 0;
         }
@@ -78,7 +77,7 @@
         .halo-1 {
             width: 380px;
             height: 380px;
-            background: rgba(255, 119, 0, 0.15);
+            background: rgba(255, 215, 0, 0.12);
             top: 5%;
             right: -100px;
             animation: floatGlow 9s ease-in-out infinite alternate;
@@ -87,7 +86,7 @@
         .halo-2 {
             width: 340px;
             height: 340px;
-            background: rgba(255, 90, 0, 0.1);
+            background: rgba(255, 215, 0, 0.08);
             bottom: 12%;
             left: -90px;
             animation: floatGlow 11s ease-in-out infinite alternate-reverse;
@@ -98,14 +97,14 @@
             100% { transform: translateY(45px) scale(1.15); }
         }
 
-        /* هدر کامپیوتر و موبایل کاملاً ثابت (Fixed) */
+        /* هدر ثابت */
         header {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             width: 100%;
-            background: rgba(9, 10, 13, 0.88);
+            background: rgba(10, 12, 16, 0.88);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--card-border);
@@ -134,8 +133,8 @@
             height: 42px;
             border-radius: 12px;
             object-fit: cover;
-            border: 1px solid rgba(255, 119, 0, 0.45);
-            box-shadow: 0 0 16px var(--orange-glow);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 15px var(--yellow-glow);
         }
 
         .logo-title {
@@ -143,9 +142,9 @@
         }
 
         .contact-btn {
-            background: rgba(255, 119, 0, 0.08);
-            color: var(--orange-accent);
-            border: 1.5px solid var(--orange-accent);
+            background: rgba(255, 215, 0, 0.08);
+            color: var(--yellow-accent);
+            border: 1.5px solid var(--yellow-accent);
             padding: 8px 18px;
             border-radius: 30px;
             text-decoration: none;
@@ -155,9 +154,9 @@
         }
 
         .contact-btn:hover {
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #0a0c10;
-            box-shadow: 0 0 20px var(--orange-glow);
+            box-shadow: 0 0 20px var(--yellow-glow);
         }
 
         /* کانتینر اصلی محتوا */
@@ -188,28 +187,28 @@
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            background: rgba(255, 119, 0, 0.08);
-            border: 1px solid rgba(255, 119, 0, 0.3);
+            background: rgba(255, 215, 0, 0.07);
+            border: 1px solid rgba(255, 215, 0, 0.25);
             padding: 7px 18px;
             border-radius: 30px;
             font-size: 0.85rem;
             color: #fff;
             backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(255, 119, 0, 0.12);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
         }
 
         .pulse-dot {
             width: 9px;
             height: 9px;
-            background-color: var(--orange-accent);
+            background-color: var(--yellow-accent);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--orange-accent);
+            box-shadow: 0 0 10px var(--yellow-accent);
             animation: pulseGlow 1.6s infinite ease-in-out;
         }
 
         @keyframes pulseGlow {
-            0%, 100% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 15px var(--orange-accent), 0 0 4px #fff; }
-            50% { opacity: 0.3; transform: scale(0.75); box-shadow: 0 0 4px var(--orange-accent); }
+            0%, 100% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 14px var(--yellow-accent), 0 0 4px #fff; }
+            50% { opacity: 0.3; transform: scale(0.75); box-shadow: 0 0 4px var(--yellow-accent); }
         }
 
         .hero h1 {
@@ -220,8 +219,8 @@
         }
 
         .hero h1 span {
-            color: var(--orange-accent);
-            text-shadow: 0 0 25px var(--orange-glow);
+            color: var(--yellow-accent);
+            text-shadow: 0 0 25px var(--yellow-glow);
         }
 
         .hero p {
@@ -262,9 +261,9 @@
         }
 
         .square-btn.active {
-            border-color: var(--orange-accent);
-            background: rgba(255, 119, 0, 0.12);
-            box-shadow: 0 0 30px var(--orange-glow);
+            border-color: var(--yellow-accent);
+            background: rgba(255, 215, 0, 0.12);
+            box-shadow: 0 0 30px var(--yellow-glow);
             transform: translateY(-4px);
         }
 
@@ -272,20 +271,20 @@
             width: 65px;
             height: 65px;
             border-radius: 20px;
-            background: rgba(255, 119, 0, 0.08);
-            border: 1px solid rgba(255, 119, 0, 0.3);
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--orange-accent);
-            box-shadow: 0 0 16px var(--orange-glow);
+            color: var(--yellow-accent);
+            box-shadow: 0 0 16px var(--yellow-glow);
             transition: all 0.3s ease;
         }
 
         .square-btn.active .square-icon-wrap {
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #0a0c10;
-            box-shadow: 0 0 25px var(--orange-accent);
+            box-shadow: 0 0 25px var(--yellow-accent);
         }
 
         .square-icon-wrap svg {
@@ -302,7 +301,7 @@
         .section-divider {
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 119, 0, 0.28), rgba(255, 255, 255, 0.08), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), rgba(255, 255, 255, 0.08), transparent);
             margin: 5px 0;
         }
 
@@ -323,7 +322,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* آکاردئون خدمات */
+        /* لیست آکاردئونی خدمات */
         .services-accordion {
             display: flex;
             flex-direction: column;
@@ -341,14 +340,14 @@
         }
 
         .accordion-item.open {
-            border-color: rgba(255, 119, 0, 0.45);
-            box-shadow: 0 0 20px rgba(255, 119, 0, 0.12);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
         }
 
         .accordion-item.special-item {
-            border: 1.5px solid rgba(255, 119, 0, 0.45);
-            background: linear-gradient(135deg, rgba(255, 119, 0, 0.1) 0%, rgba(18, 22, 30, 0.85) 100%);
-            box-shadow: 0 0 22px rgba(255, 119, 0, 0.15);
+            border: 1.5px solid rgba(255, 215, 0, 0.45);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(18, 22, 30, 0.85) 100%);
+            box-shadow: 0 0 22px rgba(255, 215, 0, 0.12);
         }
 
         .accordion-header {
@@ -367,15 +366,15 @@
         }
 
         .accordion-tag {
-            background: rgba(255, 119, 0, 0.12);
-            color: var(--orange-accent);
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--yellow-accent);
             font-size: 0.75rem;
             padding: 3px 9px;
             border-radius: 6px;
         }
 
         .accordion-tag.special-tag {
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #0a0c10;
             font-weight: 900;
         }
@@ -383,7 +382,7 @@
         .accordion-chevron {
             width: 20px;
             height: 20px;
-            color: var(--orange-accent);
+            color: var(--yellow-accent);
             transition: transform 0.3s ease;
         }
 
@@ -426,10 +425,10 @@
         }
 
         .sub-tab-btn.active {
-            border-color: var(--orange-accent);
-            background: rgba(255, 119, 0, 0.15);
-            color: var(--orange-accent);
-            box-shadow: 0 0 15px var(--orange-glow);
+            border-color: var(--yellow-accent);
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--yellow-accent);
+            box-shadow: 0 0 15px var(--yellow-glow);
         }
 
         .sub-content-panel {
@@ -462,8 +461,8 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            background: rgba(255, 119, 0, 0.08);
-            border: 1px dashed rgba(255, 119, 0, 0.38);
+            background: rgba(255, 215, 0, 0.07);
+            border: 1px dashed rgba(255, 215, 0, 0.35);
             border-radius: 12px;
             padding: 11px 13px;
             color: #ffffff;
@@ -480,9 +479,9 @@
         }
 
         .price-highlight {
-            color: var(--orange-accent);
+            color: var(--yellow-accent);
             font-size: clamp(0.84rem, 3.2vw, 1.05rem);
-            text-shadow: 0 0 10px var(--orange-glow);
+            text-shadow: 0 0 10px var(--yellow-glow);
             white-space: nowrap;
             flex-shrink: 0;
         }
@@ -490,7 +489,7 @@
         .order-btn {
             display: block;
             width: 100%;
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #0a0c10;
             padding: 12px;
             border-radius: 12px;
@@ -499,14 +498,14 @@
             text-decoration: none;
             font-size: 0.95rem;
             text-align: center;
-            box-shadow: 0 0 16px var(--orange-glow);
+            box-shadow: 0 0 15px var(--yellow-glow);
             transition: all 0.25s ease;
             margin-top: 4px;
         }
 
         .order-btn:hover {
-            background: var(--orange-hover);
-            box-shadow: 0 0 24px var(--orange-glow);
+            background: #ffe34d;
+            box-shadow: 0 0 22px var(--yellow-glow);
             transform: scale(1.01);
         }
 
@@ -534,8 +533,8 @@
         }
 
         .review-card:hover {
-            border-color: var(--orange-accent);
-            box-shadow: 0 0 20px var(--orange-glow);
+            border-color: var(--yellow-accent);
+            box-shadow: 0 0 20px var(--yellow-glow);
             transform: translateY(-4px);
         }
 
@@ -561,10 +560,10 @@
         .review-placeholder svg {
             width: 28px;
             height: 28px;
-            color: var(--orange-accent);
+            color: var(--yellow-accent);
         }
 
-        /* مدال‌های پاپ‌آپ */
+        /* مدال‌های پاپ‌آپ با قابلیت بلور */
         .modal {
             display: none;
             position: fixed;
@@ -588,11 +587,11 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* کارت واریز وجه */
+        /* کارت واریز وجه و ثبت سفارش */
         .payment-box {
             background: rgba(18, 22, 30, 0.96);
-            border: 1.5px solid rgba(255, 119, 0, 0.45);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), 0 0 35px var(--orange-glow);
+            border: 1.5px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8), 0 0 35px var(--yellow-glow);
             border-radius: 24px;
             width: 100%;
             max-width: 470px;
@@ -634,9 +633,10 @@
             color: var(--text-muted);
         }
 
+        /* نوار جزئیات سفارش انتخاب‌شده */
         .selected-order-info {
-            background: rgba(255, 119, 0, 0.08);
-            border: 1px solid rgba(255, 119, 0, 0.28);
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.25);
             border-radius: 14px;
             padding: 12px 14px;
             display: flex;
@@ -650,9 +650,9 @@
         }
 
         .selected-order-price {
-            color: var(--orange-accent);
+            color: var(--yellow-accent);
             font-size: 1.05rem;
-            text-shadow: 0 0 12px var(--orange-glow);
+            text-shadow: 0 0 12px var(--yellow-glow);
         }
 
         /* کادر کارت بانکی */
@@ -668,7 +668,7 @@
             width: 100%;
         }
 
-        /* ردیف شماره کارت و دکمه «کپی شماره کارت» - ۱۰۰٪ فیکس در یک خط */
+        /* ردیف شماره کارت و دکمه کپی شماره کارت - ۱۰۰٪ فیکس در یک خط */
         .card-number-row {
             display: flex;
             align-items: center;
@@ -684,14 +684,14 @@
             letter-spacing: 0.5px;
             color: #ffffff;
             font-family: monospace, 'Peyda', sans-serif !important;
-            white-space: nowrap !important;
+            white-space: nowrap !important; /* جلوگیری قطعی از شکستن خط */
             flex-shrink: 0;
         }
 
         .copy-card-btn {
-            background: rgba(255, 119, 0, 0.15);
-            border: 1px solid var(--orange-accent);
-            color: var(--orange-accent);
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid var(--yellow-accent);
+            color: var(--yellow-accent);
             padding: 6px 10px;
             border-radius: 10px;
             font-size: clamp(0.72rem, 2.4vw, 0.82rem);
@@ -702,7 +702,7 @@
         }
 
         .copy-card-btn:hover {
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #000;
         }
 
@@ -732,19 +732,19 @@
             justify-content: center;
             gap: 8px;
             width: 100%;
-            background: var(--orange-accent);
+            background: var(--yellow-accent);
             color: #0a0c10;
             padding: 13px;
             border-radius: 14px;
             text-decoration: none;
             font-size: 1rem;
-            box-shadow: 0 0 22px var(--orange-glow);
+            box-shadow: 0 0 22px var(--yellow-glow);
             transition: all 0.25s ease;
         }
 
         .send-receipt-btn:hover {
-            background: var(--orange-hover);
-            box-shadow: 0 0 28px var(--orange-glow);
+            background: #ffe34d;
+            box-shadow: 0 0 28px var(--yellow-glow);
             transform: scale(1.01);
         }
 
@@ -753,8 +753,8 @@
             max-width: 90vw;
             max-height: 85vh;
             border-radius: 16px;
-            border: 2px solid var(--orange-accent);
-            box-shadow: 0 0 35px var(--orange-glow);
+            border: 2px solid var(--yellow-accent);
+            box-shadow: 0 0 35px var(--yellow-glow);
         }
 
         .features-strip {
@@ -780,7 +780,7 @@
         }
 
         .feature-title {
-            color: var(--orange-accent);
+            color: var(--yellow-accent);
             font-size: 1.05rem;
         }
 
@@ -1074,7 +1074,7 @@
 
     </div>
 
-    <!-- پاپ‌آپ پرداخت با فیکس قطعی یک‌خطی بودن کارت و دکمه جدید -->
+    <!-- پاپ‌آپ پرداخت با فیکس قطعی یک‌خطی بودن کارت -->
     <div class="modal" id="paymentModal" onclick="closeModalSafe('paymentModal')">
         <div class="payment-box" onclick="event.stopPropagation()">
             <span class="modal-close-btn" onclick="closeModalSafe('paymentModal')">&times;</span>
@@ -1154,18 +1154,17 @@
             openModalSafe('paymentModal');
         }
 
-        // کپی شماره کارت با متن جدید «کپی شماره کارت» و هماهنگ با تم نارنجی
         function copyCardNumber() {
             const rawCard = '6104338702037264';
             navigator.clipboard.writeText(rawCard).then(() => {
                 const btn = document.getElementById('copyBtn');
                 btn.innerText = 'کپی شد! ✔';
-                btn.style.background = 'var(--orange-accent)';
+                btn.style.background = '#ffd700';
                 btn.style.color = '#000';
                 setTimeout(() => {
                     btn.innerText = 'کپی شماره کارت';
-                    btn.style.background = 'rgba(255, 119, 0, 0.15)';
-                    btn.style.color = 'var(--orange-accent)';
+                    btn.style.background = 'rgba(255, 215, 0, 0.15)';
+                    btn.style.color = '#ffd700';
                 }, 2000);
             });
         }
