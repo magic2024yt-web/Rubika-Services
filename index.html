@@ -34,7 +34,7 @@
         }
 
         /* اعمال قطعی فونت سنگین پیدا روی کل صفحه و تمام دکمه‌ها */
-        body, button, input, select, textarea, .order-btn, .copy-card-btn, .send-receipt-btn, .contact-btn, .sub-tab-btn {
+        body, button, input, select, textarea, .order-btn, .copy-card-btn, .send-receipt-btn, .contact-btn, .sub-tab-btn, .channel-btn {
             font-family: 'Peyda', sans-serif !important;
             font-weight: 900 !important;
         }
@@ -167,7 +167,7 @@
             padding: 95px 18px 50px 18px;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 28px;
         }
 
         /* هیرو */
@@ -301,7 +301,7 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.25), rgba(255, 255, 255, 0.08), transparent);
-            margin: 5px 0;
+            margin: 4px 0;
         }
 
         #services-section {
@@ -314,7 +314,7 @@
             width: 100%;
         }
 
-        /* آکاردئون با باز شدن نرم کشویی */
+        /* آکاردئون خدمات */
         .services-accordion {
             display: flex;
             flex-direction: column;
@@ -383,7 +383,6 @@
             transform: rotate(180deg);
         }
 
-        /* بدنه آکاردئون با انیمیشن پیوسته */
         .accordion-body {
             max-height: 0;
             overflow: hidden;
@@ -485,7 +484,7 @@
             flex-shrink: 0;
         }
 
-        /* دکمه ثبت سفارش با فونت سنگین و هایلایت */
+        /* دکمه ثبت سفارش */
         .order-btn {
             display: block;
             width: 100%;
@@ -508,6 +507,112 @@
             box-shadow: 0 0 24px var(--yellow-glow);
             transform: scale(1.01);
         }
+
+        /* ==================== بخش جداگانه و همیشه‌پیدا: کانال روبیکا ==================== */
+        .channel-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1.5px solid rgba(255, 215, 0, 0.45);
+            border-radius: 22px;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 215, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .channel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+        }
+
+        .channel-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .channel-title {
+            font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .channel-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--yellow-accent);
+            color: #0a0c10;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 0 20px var(--yellow-glow);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .channel-btn:hover {
+            background: #ffe34d;
+            box-shadow: 0 0 28px var(--yellow-glow);
+            transform: translateY(-2px);
+        }
+
+        .channel-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke-width: 2.5;
+        }
+
+        .channel-logo-wrap {
+            width: 86px;
+            height: 86px;
+            min-width: 86px;
+            border-radius: 22px;
+            background: #151822;
+            border: 2px solid var(--yellow-accent);
+            box-shadow: 0 0 25px var(--yellow-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 6px;
+        }
+
+        .channel-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .channel-card {
+                padding: 18px 16px;
+            }
+            .channel-logo-wrap {
+                width: 74px;
+                height: 74px;
+                min-width: 74px;
+            }
+            .channel-btn {
+                padding: 10px 22px;
+                font-size: 0.92rem;
+            }
+        }
+        /* ===================================================================== */
 
         /* گالری رضایت‌ها */
         .reviews-grid {
@@ -565,7 +670,7 @@
             color: var(--yellow-accent);
         }
 
-        /* مدال‌های پاپ‌آپ با قابلیت بلور شیشه‌ای عمیق */
+        /* مدال‌های پاپ‌آپ با بلور شیشه‌ای عمیق */
         .modal {
             display: none;
             position: fixed;
@@ -589,7 +694,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* کارت واریز وجه و ثبت سفارش گلس‌مورفیک */
+        /* کارت واریز وجه و ثبت سفارش */
         .payment-box {
             background: rgba(18, 22, 31, 0.96);
             border: 1.5px solid rgba(255, 215, 0, 0.45);
@@ -1036,7 +1141,7 @@
                         <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </div>
                     <div class="accordion-body">
-                        <p class="accordion-desc" style="margin-bottom: 16px; font-size: 1rem; color: #ffffff;">سایر خدمات روبیکا از جمله رای نظرسنجی ، بازدید لایو ، ... موجوده !</p>
+                        <p class="accordion-desc" style="margin-bottom: 16px; font-size: 0.95rem; color: #ffffff;">سایر خدمات روبیکا از جمله رای نظرسنجی ، بازدید لایو ، اکانت روبیکا و خدمات سایر پلتفرم‌ها موجوده !</p>
                         <a href="https://rubika.ir/i_4_iIia" target="_blank" class="order-btn">استعلام قیمت در روبیکا</a>
                     </div>
                 </div>
@@ -1049,6 +1154,26 @@
             <div class="reviews-grid" id="reviews-grid"></div>
         </div>
 
+        <!-- خط جداکننده قبل از بخش کانال ما در روبیکا -->
+        <div class="section-divider"></div>
+
+        <!-- ==================== بخش جداگانه و همیشه پیدا: کانال ما در روبیکا ==================== -->
+        <div class="channel-card">
+            <div class="channel-info">
+                <div class="channel-title">کانال ما در روبیکا</div>
+                <a href="https://rubika.ir/joinc/FGFHEEJI0QNRRKBRJBXNIVXCYYHKSLRZ" target="_blank" class="channel-btn">
+                    <span>پیوستن به کانال</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div class="channel-logo-wrap">
+                <img src="rubika.jpg" alt="کانال روبیکا" class="channel-logo-img" onerror="this.onerror=null; this.src='icon.jpg';">
+            </div>
+        </div>
+
+        <!-- خط جداکننده بعد از بخش کانال ما در روبیکا -->
         <div class="section-divider"></div>
 
         <!-- ویژگی‌ها -->
@@ -1138,7 +1263,6 @@
             }
         }
 
-        // عملکرد هوشمند دکمه بازگشت بدون اسکرول تصادفی
         window.addEventListener('popstate', (e) => {
             if (isClosingViaButton) {
                 isClosingViaButton = false;
@@ -1155,7 +1279,7 @@
             openModalSafe('paymentModal');
         }
 
-        // سیستم کپی ۱۰۰٪ تضمینی و فال‌بک (حتی در محیط بدون SSL و فایل محلی)
+        // سیستم کپی ۱۰۰٪ تضمینی با قابلیت فال‌بک
         function copyCardNumber() {
             const rawCard = '6104338702037264';
             const btn = document.getElementById('copyBtn');
@@ -1282,7 +1406,6 @@
             }
         }
 
-        // عملکرد بی‌نقص آکاردئون با کلیک فقط روی هدر
         function toggleAccordion(element) {
             const isOpen = element.classList.contains('open');
             document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('open'));
@@ -1299,4 +1422,4 @@
         });
     </script>
 </body>
-</html>
+                        </html>
